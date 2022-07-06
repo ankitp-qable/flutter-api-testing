@@ -13,11 +13,14 @@
   </p>
 </div>
 
+This application is build on MVVM architecture. 
+
 
 ### Table of Contents
 - [System Requirements](#system-requirements)
 - [Figma design guideline for better accuracy](#figma-design-guideline-for-better-accuracy)
 - [App Navigations](#app-navigations)
+- [Supabase Configuration](#supabase-configuration)
 - [Project Structure](#project-structure)
 - [How you can do code formatting?](#how-you-can-do-code-formatting)
 - [How you can improve the readability of code?](#how-you-can-improve-the-readability-of-code)
@@ -38,6 +41,11 @@ https://docs.dhiwise.com/knowledgehub/reference-guide-and-tools/figma
 
 Check your app's UI from the AppNavigation screen of your app.
 
+### Supabase Configurations
+
+- Add supabaseUrl and supabasePublicKey inside lib/core/utils/initial_bindings file
+- For additional details refer https://supabase.com/docs/guides/with-flutter
+                
 ### Project Structure
 
 After successful build, your application structure should look like this:

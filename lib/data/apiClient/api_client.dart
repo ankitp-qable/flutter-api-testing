@@ -34,30 +34,6 @@ class ApiClient extends GetConnect {
     return response.isOk;
   }
 
-  Future createLogout(
-      {Function(dynamic data)? onSuccess,
-      Function(dynamic error)? onError,
-      Map<String, String> headers = const {},
-      Map requestData = const {}}) async {
-    ProgressDialogUtils.showProgressDialog();
-    try {
-      await isNetworkConnected();
-      Response response = await httpClient.post('/admin/auth/logout',
-          headers: headers, body: requestData);
-      ProgressDialogUtils.hideProgressDialog();
-      if (_isSuccessCall(response)) {
-        onSuccess!(response.body);
-      } else {
-        onError!(
-          response.hasError ? response.statusText : 'Something Went Wrong!',
-        );
-      }
-    } catch (error) {
-      ProgressDialogUtils.hideProgressDialog();
-      onError!(error);
-    }
-  }
-
   Future createRegister(
       {Function(dynamic data)? onSuccess,
       Function(dynamic error)? onError,
@@ -92,29 +68,6 @@ class ApiClient extends GetConnect {
       await isNetworkConnected();
       Response response = await httpClient.post('/admin/auth/login',
           headers: headers, body: requestData);
-      ProgressDialogUtils.hideProgressDialog();
-      if (_isSuccessCall(response)) {
-        onSuccess!(response.body);
-      } else {
-        onError!(
-          response.hasError ? response.statusText : 'Something Went Wrong!',
-        );
-      }
-    } catch (error) {
-      ProgressDialogUtils.hideProgressDialog();
-      onError!(error);
-    }
-  }
-
-  Future fetchUserId(
-      {Function(dynamic data)? onSuccess,
-      Function(dynamic error)? onError,
-      Map<String, String> headers = const {}}) async {
-    ProgressDialogUtils.showProgressDialog();
-    try {
-      await isNetworkConnected();
-      Response response =
-          await httpClient.get('/admin/user/:id', headers: headers);
       ProgressDialogUtils.hideProgressDialog();
       if (_isSuccessCall(response)) {
         onSuccess!(response.body);
