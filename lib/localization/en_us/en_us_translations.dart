@@ -20,7 +20,6 @@ final Map<String, String> enUs = {
   "msg_loyalty_card": "Loyalty Card & Others",
   "msg_privacy_setting": "Privacy Settings",
   "lbl_change_password": "Change Password",
-  "lbl_log_out": "Log Out",
   "lbl_full_nname": "Full NName",
   "lbl_notification": "Notification",
   "lbl_welcome_back": "Welcome Back",
