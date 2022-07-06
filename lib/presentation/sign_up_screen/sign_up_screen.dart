@@ -2,6 +2,7 @@ import 'controller/sign_up_controller.dart';
 import 'package:fluter_api_testing/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:fluter_api_testing/data/models/register/post_register_req.dart';
+import 'package:fluter_api_testing/supabase/models/registor_model.dart';
 
 class SignUpScreen extends GetWidget<SignUpController> {
   @override
@@ -435,15 +436,15 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                 children: [
                                                   Padding(
                                                       padding: EdgeInsets.only(
-                                                          left:
-                                                              getHorizontalSize(
-                                                                  53.00)),
+                                                          left: getHorizontalSize(
+                                                              53.00)),
                                                       child: IconButton(
-                                                          onPressed: () {},
+                                                          onPressed: () {
+                                                            onPressGoogle();
+                                                          },
                                                           constraints: BoxConstraints(
-                                                              minHeight:
-                                                                  getSize(
-                                                                      60.00),
+                                                              minHeight: getSize(
+                                                                  60.00),
                                                               minWidth: getSize(
                                                                   60.00)),
                                                           padding:
@@ -458,8 +459,12 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                                       .whiteA700,
                                                                   borderRadius:
                                                                       BorderRadius.circular(
-                                                                          getHorizontalSize(10.00)),
-                                                                  border: Border.all(color: ColorConstant.black900Cc, width: getHorizontalSize(1.00))),
+                                                                          getHorizontalSize(
+                                                                              10.00)),
+                                                                  border: Border.all(
+                                                                      color: ColorConstant
+                                                                          .black900Cc,
+                                                                      width: getHorizontalSize(1.00))),
                                                               padding: EdgeInsets.only(left: getHorizontalSize(10.40), top: getVerticalSize(10.40), right: getHorizontalSize(10.40), bottom: getVerticalSize(10.40)),
                                                               child: Image.asset(ImageConstant.imgGoogle)))),
                                                   Padding(
@@ -554,5 +559,18 @@ class SignUpScreen extends GetWidget<SignUpController> {
         onConfirm: () => Get.back(),
         title: "Error",
         middleText: "Something went wrong!");
+  }
+
+  onPressGoogle() async {
+    var registorModelReq = RegistorModel(
+      username: controller.usernameController.text.toString(),
+      email: controller.emailController.text.toString(),
+      name: controller.fullnameController.text.toString(),
+      mobileNo: controller.mobileNoController.text.toString(),
+      password: controller.passwordController.text.toString(),
+    );
+    controller.createRegistorDocument(
+      reqParams: registorModelReq.toJson(),
+    );
   }
 }
