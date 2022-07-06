@@ -72,9 +72,9 @@ class AppRoutes {
     ),
     GetPage(
       name: initialRoute,
-      page: () => ProfileScreen(),
+      page: () => SignUpScreen(),
       bindings: [
-        ProfileBinding(),
+        SignUpBinding(),
       ],
     )
   ];
